@@ -11,6 +11,16 @@ public class Engine {
    }
 String powerUp(){
        return this.engineType.toString();
-}
 
+
+}
+  public static Boolean powerUp(String s){
+      for (type c : type.values()) {
+          if (c.name().equals(s)) {
+              return true;
+          }
+      }
+
+      return false;
+  }
 }

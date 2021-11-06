@@ -1,5 +1,6 @@
 package cars;
 
+import cars.controller.CarService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl implements CarService {
 
     private static final Map<Integer, Car> CAR_REPOSITORY_MAP = new HashMap<>();
     private static final AtomicInteger CAR_ID_HOLDER = new AtomicInteger();

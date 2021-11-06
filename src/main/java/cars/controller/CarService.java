@@ -1,4 +1,6 @@
-package cars;
+package cars.controller;
+
+import cars.Car;
 
 import java.util.List;
 
