@@ -21,15 +21,15 @@ public class Controller {
     }
 
     @PostMapping(value = "/")
-        public ResponseEntity<?> create(@RequestBody String manufacturerName, String modelName, String typeEngine) {
+        public ResponseEntity<?> create(@RequestBody Car car) {
 
-        carService.create(manufacturerName, modelName, typeEngine);
+        carService.create(car);
 
             return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/")
-    public ResponseEntity<List<Car>> read() {
+    public ResponseEntity<List<Car>> readAll() {
         final List<Car> cars = carService.readAll();
 
         return cars != null &&  !cars.isEmpty()

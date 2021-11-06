@@ -5,17 +5,12 @@ package cars;
 public class Car {
 
 
-    private int id;
-
+    protected int id;
     protected String manufacturerName;
     protected Engine engine;
     protected String modelName;
 
-    /* public Car(String manufacturerName, String modelName, Engine engine) {
-        this.manufacturerName = manufacturerName;
-        this.modelName = modelName;
-        this.engine = engine;
-    } */
+
 
     public void setManufacturerName(String manufacturerName) {
         this.manufacturerName = manufacturerName;
@@ -29,8 +24,29 @@ public class Car {
         this.id = id;
     }
 
-    public void setEngine(Engine engine) {
-        this.engine = engine;
+    public void setEngine(String engine) {
+        if (engine.equals("Petrol")) {
+            this.engine= new Engine(Engine.type.Petrol);
+        }
+        if (engine.equals("Diesel")) {
+            this.engine= new Engine(Engine.type.Diesel);
+        }
+    }
+
+    public String getEngine() {
+        return engine.powerUp();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getManufacturerName() {
+        return manufacturerName;
+    }
+
+    public String getModelName() {
+        return modelName;
     }
 
     public String toString() {

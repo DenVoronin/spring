@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface CarService {
 
-    void create(String manufacturerName,String modelName, String typeEngine);
+    void create(Car car);
 
     List<Car> readAll();
 
-    Car read(Long id);
+    Car read(int id);
 
-    boolean update(Car car, Long id);
+    boolean update(Car car, int id);
 
-    boolean delete(Long id);
+    boolean delete(int id);
 }

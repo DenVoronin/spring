@@ -2,6 +2,7 @@ package cars;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,45 +13,37 @@ public class CarServiceImpl implements CarService{
 
     private static final Map<Integer, Car> CAR_REPOSITORY_MAP = new HashMap<>();
     private static final AtomicInteger CAR_ID_HOLDER = new AtomicInteger();
-    //потом сделать БД!
+    //потом сделать через БД!
 
     @Override
-    public void create(String manufacturerName,String modelName, String typeEngine) {
+    public void create(Car car) {
         final int carId = CAR_ID_HOLDER.incrementAndGet();
-        Car car = new Car();
 
-        if (typeEngine.equals("Petrol")) {
             car.setId(carId);
-            car.setModelName(modelName);
-            car.setManufacturerName(manufacturerName);
-            car.setEngine(new Engine(Engine.type.Petrol));
-        }
-        if (typeEngine.equals("Diesel")) {
-            car.setId(carId);
-            car.setModelName(modelName);
-            car.setManufacturerName(manufacturerName);
-            car.setEngine(new Engine(Engine.type.Diesel));
-        }
+            car.setModelName(car.modelName);
+            car.setManufacturerName(car.manufacturerName);
+            car.setEngine(car.engine.powerUp());
+            System.out.println("add: "+car.toString());
         CAR_REPOSITORY_MAP.put(carId, car);
     }
 
     @Override
     public List<Car> readAll() {
-        return null;
+        return new ArrayList<>(CAR_REPOSITORY_MAP.values());
     }
 
     @Override
-    public Car read(Long id) {
+    public Car read(int id) {
         return CAR_REPOSITORY_MAP.get(id);
     }
 
     @Override
-    public boolean update(Car car, Long id) {
+    public boolean update(Car car, int id) {
         return false;
     }
 
     @Override
-    public boolean delete(Long id) {
+    public boolean delete(int id) {
         return false;
     }
 }
